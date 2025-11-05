@@ -126,6 +126,22 @@ print("Bus 1:", i2c1.scan())
 
 
 
+from machine import Pin, I2C
+import time
+
+# BitDogLab — conector J6 usa I2C1 (SDA=GP6, SCL=GP7)
+i2c = I2C(1, scl=Pin(7), sda=Pin(6), freq=400000)
+
+print("🔍 Escaneando bus I²C en J6 (GP6/GP7)...")
+while True:
+    devices = i2c.scan()
+    if devices:
+        print("✅ Dispositivos detectados:", [hex(d) for d in devices])
+    else:
+        print("⚠️ Ningún dispositivo detectado. Revisa conexiones o polaridad.")
+    time.sleep(2)
+
+
 
 
 
