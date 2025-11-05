@@ -115,31 +115,28 @@ else:
 
 
 from machine import Pin, I2C
-
-# Prueba bus 0 (SDA=GP4, SCL=GP5)
-i2c0 = I2C(0, scl=Pin(5), sda=Pin(4))
-print("Bus 0:", i2c0.scan())
-
-# Prueba bus 1 (SDA=GP6, SCL=GP7)
-i2c1 = I2C(1, scl=Pin(7), sda=Pin(6))
-print("Bus 1:", i2c1.scan())
-
-
-
-from machine import Pin, I2C
 import time
 
-# BitDogLab — conector J6 usa I2C1 (SDA=GP6, SCL=GP7)
+# BitDogLab → conector J6 (SDA = GP6, SCL = GP7)
 i2c = I2C(1, scl=Pin(7), sda=Pin(6), freq=400000)
 
-print("🔍 Escaneando bus I²C en J6 (GP6/GP7)...")
-while True:
-    devices = i2c.scan()
-    if devices:
-        print("✅ Dispositivos detectados:", [hex(d) for d in devices])
-    else:
-        print("⚠️ Ningún dispositivo detectado. Revisa conexiones o polaridad.")
-    time.sleep(2)
+print("🔍 Escaneando bus I²C (conector J6, GP6/GP7)...")
+time.sleep(1)
+
+devices = i2c.scan()
+
+if devices:
+    print("✅ Dispositivos detectados:", [hex(d) for d in devices])
+else:
+    print("⚠️ No se detectó ningún dispositivo I²C.")
+    print("Verifica:")
+    print(" - VIN → 3V3")
+    print(" - GND → GND")
+    print(" - SDA → GP6 (azul)")
+    print(" - SCL → GP7 (amarillo)")
+
+
+
 
 
 
