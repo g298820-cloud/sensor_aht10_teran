@@ -21,6 +21,52 @@
 - Tabela indicando as conexões entre BitDogLab e sensor:
 
 
+# max30102.py – Biblioteca simplificada para MicroPython
+import time
+from micropython import const
+
+_MAX30102_ADDR = const(0x57)
+_PART_ID = const(0xFF)
+_EXPECTED_PART_ID = const(0x15)
+_REG_INTR_STATUS_1 = const(0x00)
+_REG_INTR_STATUS_2 = const(0x01)
+_REG_FIFO_WR_PTR = const(0x04)
+_REG_FIFO_RD_PTR = const(0x06)
+_REG_FIFO_DATA = const(0x07)
+_REG_MODE_CONFIG = const(0x09)
+_REG_SPO2_CONFIG = const(0x0A)
+_REG_LED1_PA = const(0x0C)
+_REG_LED2_PA = const(0x0D)
+_REG_MULTI_LED_CTRL1 = const(0x11)
+_REG_MULTI_LED_CTRL2 = const(0x12)
+_REG_TEMP_INT = const(0x1F)
+_REG_TEMP_FRAC = const(0x20)
+
+class MAX30102:
+    def __init__(self, i2c, addr=_MAX30102_ADDR):
+        self.i2c = i2c
+        self.addr = addr
+
+    def check_part_id(self):
+        part_id = self.i2c.readfrom_mem(self.addr, _PART_ID, 1)[0]
+        return part_id == _EXPECTED_PART_ID
+
+    def setup_sensor(self):
+        self.i2c.writeto_mem(self.addr, _REG_MODE_CONFIG, b'\x03')
+        self.i2c.writeto_mem(self.addr, _REG_SPO2_CONFIG, b'\x27')
+        self.i2c.writeto_mem(self.addr, _REG_LED1_PA, b'\x24')
+        self.i2c.writeto_mem(self.addr, _REG_LED2_PA, b'\x24')
+
+    def read_sequential(self, n=1):
+        red_buf = []
+        ir_buf = []
+        for _ in range(n):
+            data = self.i2c.readfrom_mem(self.addr, _REG_FIFO_DATA, 6)
+            red = (data[0]<<16 | data[1]<<8 | data[2]) & 0x3FFFF
+            ir = (data[3]<<16 | data[4]<<8 | data[5]) & 0x3FFFF
+            red_buf.append(red)
+            ir_buf.append(ir)
+        return red_buf, ir_buf
 
 
 
