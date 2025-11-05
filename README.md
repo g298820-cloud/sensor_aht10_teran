@@ -1,19 +1,35 @@
 # <NOME DO SENSOR> — Sensores na BitDogLab
 
-**Dupla:** Nome A (RA / @usuario), Nome B (RA / @usuario)  
+**Dupla:** Gustavo Santos Terán Rupay (298820 / @gustavosantosteran)  
 **Turma:** EA801 — 2025S2  
-**Repositório:** (URL deste repo)
+**Repositório:** https://github.com/g298820-cloud/sensor_max3010x_teran
 
 ## 1. Descrição do sensor
-- Fabricante / modelo:
-- Princípio de funcionamento:
-- Tensão/consumo típicos:
+- Fabricante / modelo: GY-MAX3010X
+- Princípio de funcionamento: o sensor emite luz vermelha e infravermelha e mede a variação da luz refletida nos tecidos para estimar a pulsação e a saturação de oxigênio no sangue
+- Tensão/consumo típicos: 3,3 V a 5 V
+  
 - Faixa de medição / resolução:
-- Datasheet (URL):
+  Frequência cardíaca: 30–240 bpm
+  SpO₂: 70–100 % (precisão ±2 %)
+  
+- Datasheet (URL): MAX30102 Datasheet – Analog Devices (https://www.analog.com/media/en/technical-documentation/data-sheets/max30102.pdf?utm_source=chatgpt.com)
 
 ## 2. Conexões de hardware
 - Tabela indicando as conexões entre BitDogLab e sensor:
+  <img width="703" height="153" alt="image" src="https://github.com/user-attachments/assets/c4a4cf46-dfdc-47f6-acc3-99f2d5547fd5" />
+
+
+
+
+
+
+
+
 - Observações (resistores, alimentação externa, níveis lógicos):
+
+
+
 
 **Tabela de conexões (imagem em `docs/`):**  
 ![conexoes](docs/conexoes.jpg)
