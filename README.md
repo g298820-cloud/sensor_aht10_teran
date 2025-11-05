@@ -114,6 +114,19 @@ else:
 
 
 
+from machine import Pin, I2C
+
+# Prueba bus 0 (SDA=GP4, SCL=GP5)
+i2c0 = I2C(0, scl=Pin(5), sda=Pin(4))
+print("Bus 0:", i2c0.scan())
+
+# Prueba bus 1 (SDA=GP6, SCL=GP7)
+i2c1 = I2C(1, scl=Pin(7), sda=Pin(6))
+print("Bus 1:", i2c1.scan())
+
+
+
+
 
 
 
