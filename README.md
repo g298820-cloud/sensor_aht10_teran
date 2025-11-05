@@ -1,3 +1,6 @@
+https://github.com/BitDogLab/BitDogLab/blob/main/softwares/I2C/teste%20e%20Scam%20de%20I2C%20V2A%20mostrando%20no%20OLED%20%20funcionando.py
+
+
 # <NOME DO SENSOR> — Sensores na BitDogLab
 
 **Dupla:** Gustavo Santos Terán Rupay (298820 / @gustavosantosteran)  
