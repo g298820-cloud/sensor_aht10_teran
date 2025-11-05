@@ -68,6 +68,7 @@ class MAX30102:
             ir_buf.append(ir)
         return red_buf, ir_buf
 
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/c0056803-fe4c-45ed-9acb-35768cb9c72d" />
 
 
 
