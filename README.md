@@ -24,7 +24,8 @@ https://github.com/BitDogLab/BitDogLab/blob/main/softwares/I2C/teste%20e%20Scam%
   <img width="1130" height="558" alt="image" src="https://github.com/user-attachments/assets/f3db34bd-29a3-407c-8a48-95ad635cbc58" />
 
 - Observações (resistores, alimentação externa, níveis lógicos):
-
+  É recomendado o uso de resistores de pull-up (4.7 kΩ – 10 kΩ) nos pinos SDA e SCL. 
+  A comunicação segue o protocolo I²C padrão (100 kHz – 400 kHz).
 **Tabela de conexões (imagem em `docs/`):**  
 ![conexoes](docs/conexoes.jpg)
 
