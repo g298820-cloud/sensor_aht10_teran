@@ -27,8 +27,8 @@ https://github.com/BitDogLab/BitDogLab/blob/main/softwares/I2C/teste%20e%20Scam%
   É recomendado o uso de resistores de pull-up (4.7 kΩ – 10 kΩ) nos pinos SDA e SCL. 
   A comunicação segue o protocolo I²C padrão (100 kHz – 400 kHz).
 **Tabela de conexões (imagem em `docs/`):**
-  
-![conexoes](docs/conexoes.jpg)
+
+![Conexões do sensor AHT10](docs/9ec0ce30-00dc-4575-a1f1-06a74b1cea4d.png)
 
 ## 3. Dependências
 - MicroPython/C versão:
