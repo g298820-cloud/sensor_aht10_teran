@@ -32,6 +32,10 @@ https://github.com/BitDogLab/BitDogLab/blob/main/softwares/I2C/teste%20e%20Scam%
 
 ## 3. Dependências
 - MicroPython/C versão:
+- **Placa:** BitDogLab (compatível com Raspberry Pi Pico W / RP2040)
+- **Firmware:** MicroPython v1.22.1 ou superior
+- **IDE recomendada:** Thonny (versão ≥ 4.1.0)
+  
 - Bibliotecas utilizadas:
 - Como instalar (passo a passo):
 
