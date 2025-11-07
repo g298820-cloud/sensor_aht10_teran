@@ -131,7 +131,6 @@ As leituras de temperatura e umidade foram exibidas simultaneamente no terminal 
 
 como se observa:
 
-<img width="1284" height="2282" alt="image" src="https://github.com/user-attachments/assets/62071eb7-1a22-40c1-a6e1-f8388f77f88b"/>
 
 
 
