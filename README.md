@@ -131,7 +131,7 @@ As leituras de temperatura e umidade foram exibidas simultaneamente no terminal 
 
 como se observa:
 
-
+Mostra_dados.JPG
 
 
 
