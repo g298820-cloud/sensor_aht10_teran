@@ -58,10 +58,10 @@ https://github.com/BitDogLab/BitDogLab/blob/main/softwares/I2C/teste%20e%20Scam%
 1. Conecte a placa BitDogLab via USB.
 
 2. Carregue os arquivos para a placa:
-   - Copie o arquivo `ssd1306.py` para a pasta `/lib/` da placa.  
+   - Copie o arquivo `ssd1306.py` para a pasta `/src/` da placa, este arquivo é pra controlar o OLED.  
    - Copie os scripts de teste (`i2c_scan.py`, `i2c_scan_oled.py` e `aht10_prueba_2.py`) para a
-     pastaprincipal da placa ou dentro de `/src/`.
-
+     pasta principal da placa ou dentro de `/src/`.
+   - O `aht10_prueba_2.py` é o principal código encarregado do registro de dados de temperatura/umidade.   
 3. **Etapa1** – Verificar dispositivos I²C:
    - Execute o arquivo `i2c_scan.py` no Thonny.  
    - O terminal exibirá os endereços detectados,
@@ -130,6 +130,9 @@ As leituras de temperatura e umidade foram exibidas simultaneamente no terminal 
 -Alimentação de 3.3 V
 
 como se observa:
+
+<img width="1284" height="2282" alt="image" src="https://github.com/user-attachments/assets/62071eb7-1a22-40c1-a6e1-f8388f77f88b" />
+
 
 
 
