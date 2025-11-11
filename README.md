@@ -46,9 +46,32 @@ https://github.com/BitDogLab/BitDogLab/blob/main/softwares/I2C/teste%20e%20Scam%
   O projeto utiliza tanto módulos nativos do MicroPython quanto uma biblioteca externa para o display OLED.
     
 - Como instalar (passo a passo):
-  
+  - Como instalar (passo a passo):
 
-  
+1. **Baixar a biblioteca externa `ssd1306.py`**
+   - Acesse o link abaixo e salve o arquivo no seu computador:
+     [https://raw.githubusercontent.com/stlehmann/micropython-ssd1306/master/ssd1306.py](https://raw.githubusercontent.com/stlehmann/micropython-ssd1306/master/ssd1306.py)
+
+2. **Abrir o Thonny IDE**
+   - Conecte a placa **BitDogLab (Raspberry Pi Pico W / RP2040)** via cabo USB.
+   - Certifique-se de que o Thonny reconheceu a placa (no canto inferior direito deve aparecer “MicroPython (Raspberry Pi Pico)”).
+
+3. **Enviar a biblioteca para a placa**
+   - No menu do Thonny, clique em **Arquivo → Abrir...** e selecione o arquivo `ssd1306.py` baixado.
+   - Clique em **Salvar como... → No dispositivo MicroPython**.
+   - Salve o arquivo dentro da pasta `/src/` (ou diretamente na raiz da placa).
+
+4. **Verificar instalação**
+   - Execute o comando abaixo no terminal do Thonny:
+     ```python
+     import ssd1306
+     ```
+     Se não ocorrer erro, a biblioteca foi instalada corretamente.
+
+5. **Testar a comunicação**
+   - Execute o script `i2c_scan.py` para verificar se o endereço do display OLED (0x3C) aparece.
+   - Caso positivo, o display está pronto para uso nos testes do projeto.
+
 
   ssd1306 (externa) OLED
   https://raw.githubusercontent.com/stlehmann/micropython-ssd1306/master/ssd1306.py
@@ -61,10 +84,10 @@ https://github.com/BitDogLab/BitDogLab/blob/main/softwares/I2C/teste%20e%20Scam%
 
 2. Carregue os arquivos para a placa:
    - Copie o arquivo `ssd1306.py` para a pasta `/src/` da placa, este arquivo é pra controlar o OLED.  
-   - Copie os scripts de teste (`i2c_scan.py`, `i2c_scan_oled.py` e `aht10_prueba_2.py`) para a
-     pasta principal da placa ou dentro de `/src/`.
+   - Copie os scripts de teste (`i2c_scan.py`, `i2c_scan_oled.py` e `aht10_prueba_2.py`) para
+a pasta principal da placa ou dentro de `/src/`.
    - O `aht10_prueba_2.py` é o principal código encarregado do registro de dados de temperatura/umidade.   
-3. **Etapa1** – Verificar dispositivos I²C:
+3. **Etapa1** é Verificar dispositivos I²C:
    - Execute o arquivo `i2c_scan.py` no Thonny.  
    - O terminal exibirá os endereços detectados,
      como:
@@ -73,11 +96,11 @@ https://github.com/BitDogLab/BitDogLab/blob/main/softwares/I2C/teste%20e%20Scam%
 
      Confirmando que o AHT10 (0x38) e o SSD1306 (0x3C) estão sendo reconhecidos corretamente.
 
-4. **Etapa2** – Testar exibição no OLED:
+4. **Etapa2** é Testar exibição no OLED:
    - Execute `i2c_scan_oled.py`.  
    - Os endereços detectados aparecerão **diretamente no display OLED**, validando a comunicação I²C com      o módulo.
 
-5. **Etapa3** – Rodar o código principal:
+5. **Etapa3** é Rodar o código principal:
    - Execute `aht10_prueba_2.py`.  
    - O programa fará a leitura contínua dos valores de temperatura e umidade do **AHT10** e exibirá:
    - No terminal do Thonny:
