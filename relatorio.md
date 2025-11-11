@@ -33,8 +33,6 @@ real no display OLED SSD1306, através da comunicação I²C.
 -Exibição correta e contínua das medições no terminal e no OLED, com atualização a cada 2 segundos.
 -Estabilidade das leituras com variação máxima de ±0.3 °C para temperatura e ±2 %RH para umidade.
 
----
-
 ## 2. Metodologia e Implementação
 Apresente os procedimentos adotados, incluindo a arquitetura do sistema, estratégias de programação, bibliotecas utilizadas e justificativas de projeto.  
 Se aplicável, descreva o esquema de ligação elétrica, o protocolo de comunicação, as rotinas de aquisição e processamento de dados e o fluxo lógico do programa.  
@@ -47,7 +45,7 @@ Se aplicável, descreva o esquema de ligação elétrica, o protocolo de comunic
 
 2.1 Diagrama de blocos e descrição funcional dos módulos
 
-<img width="546" height="659" alt="image" src="https://github.com/user-attachments/assets/38c67d2f-8ae0-4069-9f40-2f90ea54808c" />
+<img width="346" height="459" alt="image" src="https://github.com/user-attachments/assets/38c67d2f-8ae0-4069-9f40-2f90ea54808c" />
 
 
 O funcionamento geral do sistema é representado no diagrama de blocos da Figura X, que descreve o fluxo de dados desde as medições físicas realizadas pelo sensor AHT10 até a exibição final dos resultados no display OLED e no terminal serial.
@@ -122,6 +120,7 @@ Indique aprimoramentos possíveis e oportunidades de extensão do trabalho, incl
 ## 6. Referências
 Liste as fontes técnicas e documentações consultadas, como datasheets, manuais de aplicação, artigos ou links de bibliotecas utilizadas.  
 O formato de citação é livre, desde que contenha autor, título e origem.
+
 
 
 
