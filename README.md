@@ -138,56 +138,64 @@ a pasta principal da placa ou dentro de `/src/`.
 ## 6. Resultados e validação
 - Prints/plots, fotos do setup, limitações, ruídos, dicas.
 
-<img width="536" height="404" alt="image" src="https://github.com/user-attachments/assets/b9346b2f-9520-48ab-9c83-a8e053216a60" />
+Ambiente de Teste
+- Placa: BitDogLab (RP2040, MicroPython v1.22 ou superior)
+- Barramentos I²C utilizados:
+  - I²C0 → Sensor AHT10 (SCL = GP1, SDA = GP0, 400 kHz)
+  - I²C1 → Display OLED SSD1306 (SCL = GP3, SDA = GP2, 400 kHz)
+- Alimentação: 3.3 V proveniente da própria BitDogLab
+- Condições: ambiente de laboratório, temperatura e umidade ambiente, sem controle climático.
 
-Entorno de prueba
-- Placa: BitDogLab (RP2040, MicroPython)
-- Buses I²C usados:
-  - I²C0 → AHT10 (SCL = GP1, SDA = GP0, 400 kHz)
-  - I²C1 → OLED SSD1306 (SCL = GP3, SDA = GP2, 400 kHz)
-- Alimentación: 3.3 V de la propia BitDogLab
-- Condiciones: ambiente estable (aula/laboratorio) sin control de humedad.
+Detecção dos dispositivos (scanner I²C)
+- Endereço do AHT10: 0x38
+- Endereço do SSD1306: 0x3C
+- Confirmado com os scripts src/i2c_scan.py e src/i2c_scan_oled.py.
 
-Detección de dispositivos (escáner I²C)
-- Dirección del AHT10: 0x38
-- Dirección del SSD1306: 0x3C
-- Comprobado con los scripts src/i2c_scan.py y src/i2c_scan_oled.py.
-
-Lecturas típicas (código principal src/aht10_prueba_2.py)
-- Muestras observadas en operación continua (actualización cada ~2 s):
+Leituras típicas (código principal src/aht10_prueba_2.py)
+- Amostras coletadas em execução contínua (atualização a cada 2 s):
   - Temperatura: 23.0–23.2 °C
-  - Humedad relativa: 56–62 % RH
-  - Lecturas de ~57 % RH son normales para interiores ventilados.
-- Visualización simultánea en:
-  - Terminal de Thonny (registro en tiempo real).
-  - Display OLED SSD1306 (con actualización automática).
+  - Umidade relativa: 56–62 % RH
+  - Leitura de aproximadamente 57 % RH é considerada normal em ambientes internos ventilados.
+  - No terminal do Thonny (registro em tempo real).
+  - No display OLED SSD1306 (atualização automática a cada 2 segundos).
 
-Ruido y estabilidad
-- Script: test/test_ruido.py (usa promediado de ventana móvil).
-- Resultados:
-  - Variación típica: ±0.1–0.2 °C / ±1–2 % RH.
-  - Estabilización completa tras ~1 segundo de encendido.
-  - Promediar 5 lecturas reduce el jitter y suaviza la visualización.
+Ruído e Estabilidade
+- Script: test/test_ruido.py (com filtragem por média móvel).
+- Resultados observados:
+  - Variação típica: ±0.1–0.2 °C / ±1–2 % RH.
+  - Estabilização total após ~1 segundo de energização.
+  - A aplicação de uma média móvel com 5 amostras reduziu flutuações (“jitter”) e melhorou a estabilidade das leituras.
 
-Evidencias (/docs/)
-- Escaneo y lectura básica: Prueba_basica.png
-- Prueba de ruido: prueba_ruidoo.png
-- Foto del montaje: Mostra_dados.JPG
-- Video de demostración: video_mostra.MOV
 
-Limitaciones
-- Las variaciones de humedad dependen del ambiente (personas, ventilación, etc.).
-- Precisión típica del sensor: ±0.3 °C / ±2 % RH.
-- Tiempo de respuesta ante cambios bruscos: varios segundos.
 
-Reproducibilidad
-1. Ejecutar src/i2c_scan.py → verificar 0x38 (AHT10) y 0x3C (OLED).
-2. Ejecutar src/i2c_scan_oled.py → confirmar visualización en pantalla.
-3. Ejecutar src/aht10_prueba_2.py → lecturas en OLED y terminal.
-4. (Opcional) Ejecutar test/test_ruido.py → analizar estabilidad.
+Prints / Plots / Fotos do Setup
+- Escaneamento e leitura básica: docs/Prueba_basica.png
+  <img width="1424" height="1274" alt="image" src="https://github.com/user-attachments/assets/9413bc9e-bb5e-42fc-a988-80461fa41a4c" />
+  
+- Teste de ruído: docs/prueba_ruidoo.png
+  <img width="681" height="644" alt="prueba_ruidoo" src="https://github.com/user-attachments/assets/5013cf3a-0f92-4547-8720-493afca0f131" />
 
-Conclusión
-El sistema integrando el AHT10 y el display OLED SSD1306 funcionó correctamente, mostrando lecturas estables de temperatura y humedad. Las mediciones concuerdan con condiciones reales de laboratorio y se validó la comunicación I²C entre ambos módulos sin errores.
+- Foto do protótipo montado: docs/Mostra_dados.JPG
+  
+- Vídeo de demonstração: docs/video_mostra.MOV
+
+Limitações
+- Pequenas variações de leitura devido à ventilação ou proximidade do corpo humano.
+- Precisão típica do sensor: ±0.3 °C / ±2 % RH.
+- Tempo de resposta a mudanças bruscas de umidade: alguns segundos.
+- O sensor necessita de breve tempo de aquecimento (~1 s) após a energização antes da primeira leitura estável.
+
+Dicas e Recomendações
+- Executar o script i2c_scan.py antes do uso para confirmar a detecção dos dispositivos.
+- Evitar exposição direta à respiração ou calor de mãos durante os testes.
+- Usar promediação ou filtragem simples para suavizar leituras instáveis.
+- Garantir boa conexão elétrica nos pinos SDA e SCL, pois o AHT10 é sensível a ruídos de linha.
+
+Conclusão
+O sistema integrando o sensor AHT10 e o display OLED SSD1306 funcionou de forma estável e confiável.
+As leituras de temperatura e umidade foram coerentes com as condições reais do ambiente e confirmaram o correto funcionamento da comunicação I²C entre os módulos.
+<img width="442" height="638" alt="image" src="https://github.com/user-attachments/assets/2ed4ad54-d43d-4f9c-a24e-2182a8087265" />
+
 
 <img width="432" height="637" alt="image" src="https://github.com/user-attachments/assets/83f9ab5a-6eca-4900-923d-7b0838a7deeb" />
 
