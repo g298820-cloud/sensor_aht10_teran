@@ -21,8 +21,6 @@ https://github.com/BitDogLab/BitDogLab/blob/main/softwares/I2C/teste%20e%20Scam%
 ## 2. Conexões de hardware
 - Tabela indicando as conexões entre BitDogLab e sensor:
   
- <img width= "500" height= "1200" alt="image" src="https://github.com/user-attachments/assets/78069fca-60f1-448d-8015-2f14f903a7de" />
-
   <img width="1130" height="558" alt="image" src="https://github.com/user-attachments/assets/f3db34bd-29a3-407c-8a48-95ad635cbc58" />
 
 - Observações (resistores, alimentação externa, níveis lógicos):
@@ -175,9 +173,11 @@ Prints / Plots / Fotos do Setup
 - Teste de ruído: docs/prueba_ruidoo.png
   <img width="681" height="644" alt="prueba_ruidoo" src="https://github.com/user-attachments/assets/5013cf3a-0f92-4547-8720-493afca0f131" />
 
-- Foto do protótipo montado: docs/Mostra_dados.JPG
-  
+- Foto do protótipo montado
+   <img width= "500" height= "1200" alt="image" src="https://github.com/user-attachments/assets/78069fca-60f1-448d-8015-2f14f903a7de" />
+   
 - Vídeo de demonstração: docs/video_mostra.MOV
+🎥 [Ver video de demonstração](https://github.com/g298820-cloud/sensor_aht10_teran/blob/main/docs/video_mostra.MOV)
 
 Limitações
 - Pequenas variações de leitura devido à ventilação ou proximidade do corpo humano.
