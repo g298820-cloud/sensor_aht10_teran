@@ -194,17 +194,6 @@ Dicas e Recomendações
 Conclusão
 O sistema integrando o sensor AHT10 e o display OLED SSD1306 funcionou de forma estável e confiável.
 As leituras de temperatura e umidade foram coerentes com as condições reais do ambiente e confirmaram o correto funcionamento da comunicação I²C entre os módulos.
-<img width="442" height="638" alt="image" src="https://github.com/user-attachments/assets/2ed4ad54-d43d-4f9c-a24e-2182a8087265" />
-
-
-<img width="432" height="637" alt="image" src="https://github.com/user-attachments/assets/83f9ab5a-6eca-4900-923d-7b0838a7deeb" />
-
-
-
-
-
-
-
 
 ## 7. Licença
 - Ver arquivo `LICENSE`.
