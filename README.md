@@ -24,12 +24,8 @@ https://github.com/BitDogLab/BitDogLab/blob/main/softwares/I2C/teste%20e%20Scam%
   <img width="1130" height="558" alt="image" src="https://github.com/user-attachments/assets/f3db34bd-29a3-407c-8a48-95ad635cbc58" />
 
 - Observações (resistores, alimentação externa, níveis lógicos):
-  O protocolo I²C requer resistores de pull-up nas linhas SDA e SCL (tipicamente entre 4.7 kΩ e 10 kΩ).
+  O protocolo I2C requer resistores de pull-up nas linhas SDA e SCL (tipicamente entre 4.7 kΩ e 10 kΩ).
   O módulo AHT10 já possui esses resistores integrados na placa, portanto não é necessário adicioná-los    externamente ao usar a BitDogLab.
-  
-**Tabela de conexões (imagem em `docs/`):**
-
-![Conexões do sensor AHT10](‎docs/conexoes_aht10.jpg)
 
 ## 3. Dependências
 - MicroPython/C versão:
@@ -80,7 +76,9 @@ bash
    - Copie os scripts de teste (`i2c_scan.py`, `i2c_scan_oled.py` e `aht10_prueba_2.py`) para
 a pasta principal da placa ou dentro de `/src/`.
    - O `aht10_prueba_2.py` é o principal código encarregado do registro de dados de temperatura/umidade.   
-3. **Etapa1** é Verificar dispositivos I²C:
+
+3. **Etapa1**
+   É Verificar dispositivos I²C:
    - Execute o arquivo `i2c_scan.py` no Thonny.  
    - O terminal exibirá os endereços detectados,
      como:
@@ -89,14 +87,16 @@ a pasta principal da placa ou dentro de `/src/`.
 
      Confirmando que o AHT10 (0x38) e o SSD1306 (0x3C) estão sendo reconhecidos corretamente.
 
-4. **Etapa2** é Testar exibição no OLED:
+5. **Etapa2**
+   É Testar exibição no OLED:
    - Execute `i2c_scan_oled.py`.  
-   - Os endereços detectados aparecerão **diretamente no display OLED**, validando a comunicação I²C com      o módulo.
+   - Os endereços detectados aparecerão **diretamente no display OLED**, validando a comunicação I2C com o módulo.
 
-5. **Etapa3** é Rodar o código principal:
+6. **Etapa3**
+   É Rodar o código principal:
    - Execute `aht10_prueba_2.py`.  
-   - O programa fará a leitura contínua dos valores de temperatura e umidade do **AHT10** e exibirá:
-   - No terminal do Thonny:
+   - O programa fará a leitura contínua dos valores de temperatura e umidade do AHT10 e exibirá:
+     No terminal do Thonny:
        Temperatura: 23.0 °C
        Umidade: 61.5 %
    - No display OLED SSD1306, com atualização automática a cada 2 segundos.
