@@ -79,7 +79,7 @@ a pasta principal da placa ou dentro de `/src/`.
 
    **Etapa1**
 
-   É Verificar dispositivos I²C:
+   É Verificar dispositivos I2C:
    - Execute o arquivo `i2c_scan.py` no Thonny.  
    - O terminal exibirá os endereços detectados,
      como:
@@ -155,7 +155,7 @@ Detecção dos dispositivos (scanner I²C)
 
 Leituras típicas (código principal src/aht10_prueba_2.py)
 - Amostras coletadas em execução contínua (atualização a cada 2 s):
-  - Temperatura: 23.0–23.2 °C
+  - Temperatura: 23 – 23.2 °C
   - Umidade relativa: 56–62 % RH
   - Leitura de aproximadamente 57 % RH é considerada normal em ambientes internos ventilados.
   - No terminal do Thonny (registro em tempo real).
@@ -185,9 +185,9 @@ Prints / Plots / Fotos do Setup
 
 Limitações
 - Pequenas variações de leitura devido à ventilação ou proximidade do corpo humano.
-- Precisão típica do sensor: ±0.3 °C / ±2 % RH.
+- Precisão típica do sensor: ±0.3 °C || ±2 % RH.
 - Tempo de resposta a mudanças bruscas de umidade: alguns segundos.
-- O sensor necessita de breve tempo de aquecimento (~1 s) após a energização antes da primeira leitura estável.
+- O sensor necessita de breve tempo de aquecimento (1 s) após a energização antes da primeira leitura estável.
 
 Dicas e Recomendações
 - Executar o script i2c_scan.py antes do uso para confirmar a detecção dos dispositivos.
