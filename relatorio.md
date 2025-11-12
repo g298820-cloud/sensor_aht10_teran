@@ -130,6 +130,15 @@ Discuta o comportamento observado, eventuais desvios em relação ao esperado e 
 - Registros fotográficos do setup de teste;  
 - Logs ou capturas de tela relevantes.
 
+<img width="368" height="592" alt="image" src="https://github.com/user-attachments/assets/55db78b0-5546-49ca-ac6a-721d9b013855" />
+
+
+<img width="292" height="482" alt="image" src="https://github.com/user-attachments/assets/793dab73-6816-4068-9442-2dc7be6d0710" />
+
+
+
+
+
 ---
 
 ## 4. Dificuldades e Soluções
@@ -157,6 +166,7 @@ Indique aprimoramentos possíveis e oportunidades de extensão do trabalho, incl
 ## 6. Referências
 Liste as fontes técnicas e documentações consultadas, como datasheets, manuais de aplicação, artigos ou links de bibliotecas utilizadas.  
 O formato de citação é livre, desde que contenha autor, título e origem.
+
 
 
 
