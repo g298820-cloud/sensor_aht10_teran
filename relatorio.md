@@ -72,13 +72,13 @@ O sistema é dividido em módulos funcionais integrados via barramentos digitais
 
 **2.2 Bibliotecas Utilizadas**
 
-    machine para controle dos periféricos (I2C, Pin)
+   * machine para controle dos periféricos (I2C, Pin)
 
-    time para temporização entre leituras
+   * time para temporização entre leituras
 
-    ssd1306 é biblioteca externa para o controle do display OLED via I2C
+   * ssd1306 é biblioteca externa para o controle do display OLED via I2C
 
-    Funções internas do arquivo aht10_prueba_2.py implementam a comunicação e cálculo de             temperatura e umidade.
+   * Funções internas do arquivo aht10_prueba_2.py implementam a comunicação e cálculo de             temperatura e umidade.
 
 Essas bibliotecas garantem portabilidade e fácil manutenção do código em outros projetos baseados em MicroPython.
 
@@ -94,7 +94,7 @@ A calibração não foi necessária, visto que o AHT10 possui compensação inte
 
 **Sequência lógica**
 
-2.4.1 Iniciação das interfaces I²C e do display OLED → corresponde à configuração inicial do MicroPython, onde são definidos os objetos I2C(0) e I2C(1) e a inicialização do SSD1306.
+2.4.1 Iniciação das interfaces I2C e do display OLED → corresponde à configuração inicial do MicroPython, onde são definidos os objetos I2C(0) e I2C(1) e a inicialização do SSD1306.
 
 2.4.2 Detecção e comunicação com o AHT10 → confirma que o sensor está respondendo no endereço 0x38.
 
@@ -104,7 +104,7 @@ A calibração não foi necessária, visto que o AHT10 possui compensação inte
 
 2.4.5 Exibição dos resultados → o programa mostra as leituras no OLED (via biblioteca ssd1306.py) e no terminal do Thonny.
 
-2.4.6 Espera de 2 s e repetição do ciclo → implementada com time.sleep(2) no loop principal.
+2.4.6 Espera de 2s e repetição do ciclo → implementada com time.sleep(2) no loop principal.
 
 
 
@@ -153,6 +153,7 @@ Indique aprimoramentos possíveis e oportunidades de extensão do trabalho, incl
 ## 6. Referências
 Liste as fontes técnicas e documentações consultadas, como datasheets, manuais de aplicação, artigos ou links de bibliotecas utilizadas.  
 O formato de citação é livre, desde que contenha autor, título e origem.
+
 
 
 
