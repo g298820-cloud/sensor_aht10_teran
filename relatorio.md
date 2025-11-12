@@ -147,16 +147,43 @@ Durante os testes realizados com o sensor AHT10 conectado à BitDogLab, o sistem
 
 Grandeza          Valor Médio    Variação Observada         Faixa do Datasheet              
 
-Temperatura       20,7 °C           ±0,3 °C             –40 °C a 85 °C (±0,3 °C típico) 
+Temperatura       26,7 °C           ±0,3 °C             –40 °C a 85 °C (±0,3 °C típico) 
 Umidade Relativa  57,1 % RH         ±2 % RH              0 – 100 % RH (±2 % RH típico)   
 
 **Esses valores estão em conformidade com o comportamento esperado para o AHT10, considerando as condições de temperatura ambiente (21-25 °C) e umidade relativa do ar em Campinas (55 – 60 %) no momento da medição.**
 
+-----------------------------------------------------------------------------------------
+
+<img width="427" height="546" alt="image" src="https://github.com/user-attachments/assets/f3ac3f65-801b-490c-968c-e7a874207ea9" />
+
+Parâmetro	             Média	     Desvio        Padrão	 Variação Total
+Temperatura (°C)	     24,52	     ±0,013	        24,50 – 24,55
+Umidade Relativa (%)	 51,13	     ±0,161	        50,91 – 51,43
+
+**Estabilidade da Temperatura:**
+
+1) As leituras mantiveram-se praticamente constantes, com uma variação total inferior a 0,05 °C.
+
+2) O desvio padrão muito baixo indica excelente estabilidade térmica do sensor e baixo ruído de medição.
+
+3) O valor médio de 24,52 °C está de acordo com a temperatura ambiente esperada, validando o desempenho do AHT10.
+
+**Estabilidade da Umidade Relativa:**
+
+1) As variações ficaram entre 50,91 % e 51,43 %, ou seja, dentro de ±0,16 % RH, muito abaixo do limite de precisão típico do sensor (±2 % RH).
+
+2) Pequenas flutuações são normais e refletem microvariações na umidade do ar e no processo de amostragem interna do sensor.
+
+**Ruído e Repetibilidade:**
+
+1) O ruído medido é quase imperceptível, e as curvas de temperatura e umidade apresentaram comportamento suave e contínuo.
+
+2) Isso demonstra que o sensor mantém alta repetibilidade e baixa deriva nas leituras consecutivas.
 
 
 
 
----
+
 
 ## 4. Dificuldades e Soluções
 Relate os principais desafios técnicos enfrentados e as soluções implementadas.  
@@ -183,6 +210,14 @@ Indique aprimoramentos possíveis e oportunidades de extensão do trabalho, incl
 ## 6. Referências
 Liste as fontes técnicas e documentações consultadas, como datasheets, manuais de aplicação, artigos ou links de bibliotecas utilizadas.  
 O formato de citação é livre, desde que contenha autor, título e origem.
+
+
+Datasheet (URL): [https://server4.eca.ir/eshop/AHT10/Aosong_AHT10_en_draft_0c.pdf]
+
+biblioteca externa: https://raw.githubusercontent.com/stlehmann/micropython-ssd1306/master/ssd1306.py?utm_source=chatgpt.com
+
+https://github.com/BitDogLab/BitDogLab/blob/main/softwares/I2C/teste%20e%20Scam%20de%20I2C%20V2A%20mostrando%20no%20OLED%20%20funcionando.py
+
 
 
 
