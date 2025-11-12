@@ -159,7 +159,8 @@ Umidade Relativa  57,1 % RH         ±2 % RH              0 – 100 % RH (±2 % 
 <img width="427" height="546" alt="image" src="https://github.com/user-attachments/assets/f3ac3f65-801b-490c-968c-e7a874207ea9" />
 
 
-Parâmetro	             Média	     Desvio        Padrão	 Variação Total
+	                     Média	     Desvio        Padrão	 Variação Total
+
 Temperatura (°C)	     24,52	     ±0,013	        24,50 – 24,55
 Umidade Relativa (%)	 51,13	     ±0,161	        50,91 – 51,43
 
@@ -183,7 +184,7 @@ Umidade Relativa (%)	 51,13	     ±0,161	        50,91 – 51,43
 
 2) Isso demonstra que o sensor mantém alta repetibilidade e baixa deriva nas leituras consecutivas.
 
-<img width="487" height="143" alt="image" src="https://github.com/user-attachments/assets/eebac589-6305-492a-a8fc-57f723b39ef7" />
+<img width="687" height="343" alt="image" src="https://github.com/user-attachments/assets/eebac589-6305-492a-a8fc-57f723b39ef7" />
 
 
 
@@ -222,6 +223,7 @@ Datasheet (URL): [https://server4.eca.ir/eshop/AHT10/Aosong_AHT10_en_draft_0c.pd
 biblioteca externa: https://raw.githubusercontent.com/stlehmann/micropython-ssd1306/master/ssd1306.py?utm_source=chatgpt.com
 
 https://github.com/BitDogLab/BitDogLab/blob/main/softwares/I2C/teste%20e%20Scam%20de%20I2C%20V2A%20mostrando%20no%20OLED%20%20funcionando.py
+
 
 
 
