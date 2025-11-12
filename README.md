@@ -77,7 +77,8 @@ bash
 a pasta principal da placa ou dentro de `/src/`.
    - O `aht10_prueba_2.py` é o principal código encarregado do registro de dados de temperatura/umidade.   
 
-3. **Etapa1**
+   **Etapa1**
+
    É Verificar dispositivos I²C:
    - Execute o arquivo `i2c_scan.py` no Thonny.  
    - O terminal exibirá os endereços detectados,
@@ -87,12 +88,15 @@ a pasta principal da placa ou dentro de `/src/`.
 
      Confirmando que o AHT10 (0x38) e o SSD1306 (0x3C) estão sendo reconhecidos corretamente.
 
-5. **Etapa2**
+   **Etapa2**
+
    É Testar exibição no OLED:
    - Execute `i2c_scan_oled.py`.  
    - Os endereços detectados aparecerão **diretamente no display OLED**, validando a comunicação I2C com o módulo.
 
-6. **Etapa3**
+
+   **Etapa3**
+
    É Rodar o código principal:
    - Execute `aht10_prueba_2.py`.  
    - O programa fará a leitura contínua dos valores de temperatura e umidade do AHT10 e exibirá:
@@ -106,13 +110,13 @@ a pasta principal da placa ou dentro de `/src/`.
 
 - `src/i2c_scan.py` (teste)
   
-  realiza a varredura dos dispositivos I²C conectados nos barramentos I2C0 e I2C1,
+  realiza a varredura dos dispositivos I2C conectados nos barramentos I2C0 e I2C1,
   exibindo no terminal os endereços detectados (0x38, 0x3c, 0x40).
   Utilizado para confirmar o reconhecimento do sensor AHT10 e do display OLED.
 
 - `src/ssd1306.py`
   Biblioteca que implementa todas as funções de controle do display
-  OLED SSD1306 via protocolo I²C.
+  OLED SSD1306 via protocolo I2C.
   Inclui métodos como fill(), text(), pixel(), e show() que permitem desenhar,
   escrever texto e atualizar o conteúdo da tela.
   Esta biblioteca é utilizada pelos demais scripts (como i2c_scan_oled.py e
@@ -121,7 +125,7 @@ a pasta principal da placa ou dentro de `/src/`.
 
 - `src/i2c_scan_oled.py` (teste)
   
-  mostra no display OLED SSD1306 os endereços I²C detectados nos dois barramentos.
+  mostra no display OLED SSD1306 os endereços I2C detectados nos dois barramentos.
   Serve para testar a comunicação entre o microcontrolador RP2040 e o módulo OLED,
   exibindo o resultado diretamente na tela.
   
@@ -138,7 +142,7 @@ a pasta principal da placa ou dentro de `/src/`.
 
 Ambiente de Teste
 - Placa: BitDogLab (RP2040, MicroPython v1.22 ou superior)
-- Barramentos I²C utilizados:
+- Barramentos I2C utilizados:
   - I²C0 → Sensor AHT10 (SCL = GP1, SDA = GP0, 400 kHz)
   - I²C1 → Display OLED SSD1306 (SCL = GP3, SDA = GP2, 400 kHz)
 - Alimentação: 3.3 V proveniente da própria BitDogLab
@@ -160,7 +164,7 @@ Leituras típicas (código principal src/aht10_prueba_2.py)
 Ruído e Estabilidade
 - Script: test/test_ruido.py (com filtragem por média móvel).
 - Resultados observados:
-  - Variação típica: ±0.1–0.2 °C / ±1–2 % RH.
+  - Variação típica: ±0.1–0.2 °C || ±1–2 % RH.
   - Estabilização total após ~1 segundo de energização.
   - A aplicação de uma média móvel com 5 amostras reduziu flutuações (“jitter”) e melhorou a estabilidade das leituras.
 
@@ -193,7 +197,7 @@ Dicas e Recomendações
 
 Conclusão
 O sistema integrando o sensor AHT10 e o display OLED SSD1306 funcionou de forma estável e confiável.
-As leituras de temperatura e umidade foram coerentes com as condições reais do ambiente e confirmaram o correto funcionamento da comunicação I²C entre os módulos.
+As leituras de temperatura e umidade foram coerentes com as condições reais do ambiente e confirmaram o correto funcionamento da comunicação I2C entre os módulos.
 
 ## 7. Licença
 - Ver arquivo `LICENSE`.
