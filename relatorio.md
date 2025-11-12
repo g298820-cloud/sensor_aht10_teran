@@ -1,9 +1,13 @@
 # Relatório Técnico da Dupla
 
 Disciplina: EA801 — Sistemas Embarcados
+
 Dupla: Gustavo Santos Terán Rupay (RA: 298820 / @g298820@g.unicamp.br)
+
 Período: 2025S2
+
 Placa: BitDogLab (Raspberry Pi Pico / RP2040)
+
 Sensor: AHT10 — Sensor de Umidade e Temperatura
 
 ## 1. Escopo
@@ -250,6 +254,7 @@ Disponível em: https://github.com/BitDogLab/BitDogLab/blob/main/softwares/I2C/t
 
 [4] Raspberry Pi Foundation, “RP2040 Microcontroller Documentation”, 2023.
 Disponível em: https://www.raspberrypi.com/documentation/microcontrollers/
+
 
 
 
