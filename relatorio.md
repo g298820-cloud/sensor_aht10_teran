@@ -118,7 +118,10 @@ A calibração não foi necessária, visto que o AHT10 possui compensação inte
 O esquema de ligação elétrica representa as conexões entre o sensor AHT10, a placa BitDogLab (baseada no microcontrolador RP2040) e o display OLED SSD1306. A comunicação entre os dispositivos é realizada por meio do protocolo I²C.
 
 **Tabela de Conexões**
+
+
 <img width="637" height="358" alt="image" src="https://github.com/user-attachments/assets/dd093a6f-b9b7-4e9a-a57a-c5db43254197" />
+
 
 **Descrição do Circuito**
 
@@ -262,6 +265,7 @@ Disponível em: https://github.com/BitDogLab/BitDogLab/blob/main/softwares/I2C/t
 
 [4] Raspberry Pi Foundation, “RP2040 Microcontroller Documentation”, 2023.
 Disponível em: https://www.raspberrypi.com/documentation/microcontrollers/
+
 
 
 
