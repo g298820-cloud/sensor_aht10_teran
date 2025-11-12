@@ -43,7 +43,7 @@ Se aplicável, descreva o esquema de ligação elétrica, o protocolo de comunic
 - Configurações específicas da BitDogLab e periféricos;  
 - Estratégias de depuração e calibração.
 
-2.1 Diagrama de blocos e descrição funcional dos módulos
+**2.1 Diagrama de blocos e descrição funcional dos módulos**
 
 <img width="346" height="459" alt="image" src="https://github.com/user-attachments/assets/38c67d2f-8ae0-4069-9f40-2f90ea54808c" />
 
@@ -70,7 +70,41 @@ O sistema é dividido em módulos funcionais integrados via barramentos digitais
 
 -Saída final: os resultados são exibidos simultaneamente no display e no terminal, com atualização contínua a cada 2 segundos.
 
--Essa arquitetura modular garante simplicidade, estabilidade e clareza no fluxo de dados, desde a aquisição até a exibição final das medições.
+**2.2 Bibliotecas Utilizadas**
+
+    machine – para controle dos periféricos (I2C, Pin)
+
+    time para temporização entre leituras
+
+    ssd1306 é biblioteca externa para o controle do display OLED via I²C
+
+    Funções internas do arquivo aht10_prueba_2.py implementam a comunicação e cálculo de             temperatura e umidade.
+
+Essas bibliotecas garantem portabilidade e fácil manutenção do código em outros projetos baseados em MicroPython.
+
+**2.3 Estratégias de Depuração e Calibração**
+
+Durante o desenvolvimento, foram utilizadas leituras simultâneas no terminal serial e no display OLED para verificar a consistência dos dados.
+A variação típica observada foi de ±0.3 °C em temperatura e ±2 %UR em umidade, valores compatíveis com as especificações do sensor.
+A calibração não foi necessária, visto que o AHT10 possui compensação interna de temperatura e umidade.
+
+**2.4 Flujo lógico**
+
+<img width="478" height="644" alt="image" src="https://github.com/user-attachments/assets/d15cc9cd-6a89-4329-8b70-593f13313e9c" />
+
+**Sequência lógica**
+
+2.4.1 Iniciação das interfaces I²C e do display OLED → corresponde à configuração inicial do MicroPython, onde são definidos os objetos I2C(0) e I2C(1) e a inicialização do SSD1306.
+
+2.4.2 Detecção e comunicação com o AHT10 → confirma que o sensor está respondendo no endereço 0x38.
+
+2.4.3 Leitura dos valores digitais → o AHT10 envia os dados crus de temperatura e umidade (20 bits cada).
+
+2.4.4 Conversão dos dados para valores físicos → o RP2040 aplica as fórmulas conforme o datasheet do AHT10 para °C e %UR.
+
+2.4.5 Exibição dos resultados → o programa mostra as leituras no OLED (via biblioteca ssd1306.py) e no terminal do Thonny.
+
+2.4.6 Espera de 2 s e repetição do ciclo → implementada com time.sleep(2) no loop principal.
 
 
 
@@ -120,6 +154,7 @@ Indique aprimoramentos possíveis e oportunidades de extensão do trabalho, incl
 ## 6. Referências
 Liste as fontes técnicas e documentações consultadas, como datasheets, manuais de aplicação, artigos ou links de bibliotecas utilizadas.  
 O formato de citação é livre, desde que contenha autor, título e origem.
+
 
 
 
