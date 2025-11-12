@@ -137,6 +137,7 @@ Discuta o comportamento observado, eventuais desvios em relação ao esperado e 
 Durante os testes realizados com o sensor AHT10 conectado à BitDogLab, o sistema demonstrou comunicação I²C estável com o microcontrolador RP2040, exibindo os valores de temperatura e umidade em tempo real no display OLED SSD1306.
 
 **Durante o funcionamento, observou-se:**
+<img width="315" height="363" alt="image" src="https://github.com/user-attachments/assets/6e399faa-71fd-46ea-a8c5-70f924b82c4e" />
 
 -Tempo de estabilização inicial de cerca de 1 s após energização do sensor.
 -Pequenas flutuações (< ±2 %) atribuídas à variação natural do ar e à precisão do sensor.
@@ -180,6 +181,7 @@ Indique aprimoramentos possíveis e oportunidades de extensão do trabalho, incl
 ## 6. Referências
 Liste as fontes técnicas e documentações consultadas, como datasheets, manuais de aplicação, artigos ou links de bibliotecas utilizadas.  
 O formato de citação é livre, desde que contenha autor, título e origem.
+
 
 
 
