@@ -37,11 +37,6 @@ real no display OLED SSD1306, através da comunicação I²C.
 Apresente os procedimentos adotados, incluindo a arquitetura do sistema, estratégias de programação, bibliotecas utilizadas e justificativas de projeto.  
 Se aplicável, descreva o esquema de ligação elétrica, o protocolo de comunicação, as rotinas de aquisição e processamento de dados e o fluxo lógico do programa.  
 
-**Sugestão de tópicos a abordar:**
-- Diagrama de blocos e descrição funcional dos módulos;  
-- Linguagem e ambiente de desenvolvimento utilizados;  
-- Configurações específicas da BitDogLab e periféricos;  
-- Estratégias de depuração e calibração.
 
 **2.1 Diagrama de blocos e descrição funcional dos módulos**
 
@@ -62,7 +57,7 @@ O sistema é dividido em módulos funcionais integrados via barramentos digitais
 
 -Controle: uma rotina de temporização (time.sleep(2)) define o intervalo entre leituras, garantindo atualização contínua e estável a cada 2 segundos.
 
--Comunicação I²C1: o display OLED SSD1306 está conectado ao barramento I2C1 (SDA = GP14, SCL = GP15) para exibir as medições processadas.
+-Comunicação I2C1: o display OLED SSD1306 está conectado ao barramento I2C1 para exibir as medições processadas.
 
 -Display OLED: apresenta em tempo real os valores de temperatura e umidade processados, utilizando a biblioteca externa ssd1306.py.
 
@@ -115,7 +110,7 @@ O esquema de ligação elétrica representa as conexões entre o sensor AHT10, a
 
 **Descrição do Circuito**
 
--O sensor AHT10 comunica-se com o microcontrolador via barramento I²C0, enquanto o display OLED utiliza o barramento I²C1. Ambos os módulos compartilham a mesma alimentação de 3.3 V proveniente da BitDogLab. As linhas SDA e SCL são utilizadas para transmissão de dados e sincronização, respectivamente.
+-O sensor AHT10 comunica-se com o microcontrolador via barramento I2C0, enquanto o display OLED utiliza o barramento I2C1. Ambos os módulos compartilham a mesma alimentação de 3.3 V proveniente da BitDogLab. As linhas SDA e SCL são utilizadas para transmissão de dados e sincronização, respectivamente.
 
 -O AHT10 converte a umidade e temperatura em sinais digitais, que são lidos pelo RP2040. Em seguida, o microcontrolador envia as informações processadas ao display SSD1306 para exibição. A taxa de atualização é controlada por temporização no código (time.sleep(2)).
 
@@ -123,12 +118,6 @@ O esquema de ligação elétrica representa as conexões entre o sensor AHT10, a
 ## 3. Resultados e Análise
 Apresente os principais resultados obtidos, acompanhados de gráficos, tabelas ou imagens que sustentem a análise.  
 Discuta o comportamento observado, eventuais desvios em relação ao esperado e hipóteses para as causas identificadas.  
-
-**Inclua, sempre que possível:**
-- Valores medidos e respectivos limites de erro;  
-- Comparação entre medições experimentais e dados de referência do datasheet;  
-- Registros fotográficos do setup de teste;  
-- Logs ou capturas de tela relevantes.
 
 <img width="268" height="492" alt="image" src="https://github.com/user-attachments/assets/55db78b0-5546-49ca-ac6a-721d9b013855" />
 
@@ -156,7 +145,7 @@ Umidade Relativa              57,1 % RH         ±2 % RH              0 – 100 
 
 **Esses valores estão em conformidade com o comportamento esperado para o AHT10, considerando as condições de temperatura ambiente (21-25 °C) e umidade relativa do ar em Campinas (55 – 60 %) no momento da medição.**
 
------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
 
 <img width="427" height="546" alt="image" src="https://github.com/user-attachments/assets/f3ac3f65-801b-490c-968c-e7a874207ea9" />
 
@@ -188,10 +177,8 @@ Umidade Relativa (%)	          51,13	          ±0,161	          50,91 – 51,43
 
 2) Isso demonstra que o sensor mantém alta repetibilidade e baixa deriva nas leituras consecutivas.
 
+
 <img width="687" height="343" alt="image" src="https://github.com/user-attachments/assets/eebac589-6305-492a-a8fc-57f723b39ef7" />
-
-
-
 
 
 
@@ -199,34 +186,75 @@ Umidade Relativa (%)	          51,13	          ±0,161	          50,91 – 51,43
 Relate os principais desafios técnicos enfrentados e as soluções implementadas.  
 Explique como eventuais limitações foram contornadas ou mitigadas, de modo a registrar aprendizados úteis para reproduções futuras.
 
-**Exemplos:**
-- Ajuste de timing no barramento I²C;  
-- Necessidade de adaptação da biblioteca para MicroPython;  
-- Filtragem de ruído em leitura analógica.
+Durante o desenvolvimento do projeto com o sensor AHT10 e o display OLED SSD1306, algumas dificuldades técnicas foram identificadas e solucionadas ao longo do processo de integração com a placa BitDogLab.
 
----
+1. Comunicação I2C instável:
+Inicialmente, o sensor AHT10 não era reconhecido de forma consistente no barramento I²C. O problema estava relacionado à configuração incorreta dos pinos SDA e SCL. Após revisar o datasheet da BitDogLab, foi confirmado que o sensor estava ligado ao barramento I2C1, enquanto o display OLED operava no I2C0.
+
+Solução:
+**Ajuste dos pinos no código e verificação dos endereços detectados com o script i2c_scan.py, garantindo a detecção correta dos dispositivos (0x38 e 0x3C).**
+
+3. Adaptação da biblioteca SSD1306:
+A biblioteca original ssd1306.py não estava presente no firmware padrão do MicroPython utilizado.
+
+Solução: 
+**O arquivo foi importado manualmente do repositório oficial do MicroPython e copiado para o diretório /src/ da placa, permitindo o controle total do display OLED e a exibição das leituras em tempo real.**
+
+4. Sincronização das leituras e exibição:
+Durante os primeiros testes, as medições do AHT10 e as atualizações no display ocorriam em intervalos irregulares, gerando dados intermitentes.
+
+Solução: 
+**Foi implementado um delay fixo de 2 segundos (time.sleep(2)) entre as leituras, estabilizando o ritmo de aquisição e visualização dos dados.**
+
+5. Ruído e variação nas medições:
+Foram observadas pequenas flutuações nos valores de temperatura (±0.3 °C) e umidade (±2 % RH), especialmente durante o aquecimento do sensor e em ambientes com corrente de ar.
+
+Solução: 
+**Adição de uma média simples sobre as últimas amostras coletadas, reduzindo o ruído e melhorando a estabilidade das leituras.**
+
 
 ## 5. Conclusões e Trabalhos Futuros
 Resuma as conclusões técnicas alcançadas e a avaliação crítica dos resultados.  
 Indique aprimoramentos possíveis e oportunidades de extensão do trabalho, incluindo aplicações derivadas ou integração com outros módulos.
 
-**Exemplos:**
-- Otimizar a estabilidade do sinal por meio de filtragem digital;  
-- Adaptar o código para o ambiente C/C++ (Pico SDK);  
-- Integrar múltiplos sensores e consolidar dados via comunicação serial.
+**Conclusões:**
 
----
+-A comunicação I²C foi corretamente configurada e validada por meio dos scripts de teste (i2c_scan.py e i2c_scan_oled.py).
+
+-O sensor AHT10 apresentou boa estabilidade térmica após o tempo de aquecimento (~1 segundo).
+
+-A implementação do delay e da média móvel reduziu ruídos de leitura e melhorou a consistência das medições.
+
+-O uso do MicroPython simplificou a prototipagem e permitiu depuração rápida diretamente via Thonny.
+
+**Trabalhos futuros e melhorias propostas:**
+
+-Adaptar o código para C/C++ (Pico SDK), permitindo maior desempenho e controle sobre o hardware.
+
+-Adicionar armazenamento local ou envio dos dados via Wi-Fi, possibilitando registro contínuo e monitoramento remoto.
+
+-Integrar o AHT10 com outros sensores (luminosidade, pressão ou CO₂) e consolidar os dados em um sistema único de medição ambiental.
 
 ## 6. Referências
 Liste as fontes técnicas e documentações consultadas, como datasheets, manuais de aplicação, artigos ou links de bibliotecas utilizadas.  
 O formato de citação é livre, desde que contenha autor, título e origem.
 
+[1] Aosong (ASAIR), “AHT10 – Humidity and Temperature Sensor Datasheet”, 2020.
+Disponível em: https://server4.eca.ir/eshop/AHT10/Aosong_AHT10_en_draft_0c.pdf
 
-Datasheet (URL): [https://server4.eca.ir/eshop/AHT10/Aosong_AHT10_en_draft_0c.pdf]
+[2] S. Lehmann, “SSD1306.py – MicroPython OLED Driver Library”, GitHub Repository, 2018.
+Disponível em: https://raw.githubusercontent.com/stlehmann/micropython-ssd1306/master/ssd1306.py
 
-biblioteca externa: https://raw.githubusercontent.com/stlehmann/micropython-ssd1306/master/ssd1306.py?utm_source=chatgpt.com
+[3] BitDogLab, “Teste e varredura de dispositivos I²C com exibição no OLED (V2A)”, GitHub Repository, 2024.
+Disponível em: https://github.com/BitDogLab/BitDogLab/blob/main/softwares/I2C/teste%20e%20Scam%20de%20I2C%20V2A%20mostrando%20no%20OLED%20%20funcionando.py
 
-https://github.com/BitDogLab/BitDogLab/blob/main/softwares/I2C/teste%20e%20Scam%20de%20I2C%20V2A%20mostrando%20no%20OLED%20%20funcionando.py
+[4] Raspberry Pi Foundation, “RP2040 Microcontroller Documentation”, 2023.
+Disponível em: https://www.raspberrypi.com/documentation/microcontrollers/
+
+
+
+
+
 
 
 
